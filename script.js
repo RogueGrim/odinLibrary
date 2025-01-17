@@ -1,11 +1,16 @@
 const myLibrary = [];
 
-// Constructor for each book
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+// Class for each book
+class Book{
+
+    constructor(title,author,pages,read){
+
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
 }
 
 const entry = document.querySelector('.entry');
@@ -21,7 +26,7 @@ entry.addEventListener('click', () => {
 submit.addEventListener('click', (event) => {
     event.preventDefault();
     document.querySelector('.popUp').style.display = 'none';
-    addBookToLibrary();
+    addBookToLibrary()
     createCard(myLibrary[myLibrary.length - 1], val);
     val++;
 });
