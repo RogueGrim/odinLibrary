@@ -15,7 +15,20 @@ class Book{
 
 const entry = document.querySelector('.entry');
 const submit = document.querySelector('.submit');
+
 let val = 0;
+
+function validation(){
+    const name = document.getElementById('title');
+    const author = document.getElementById('author');
+    const pages =  document.getElementById('pages');
+
+    if(name.checkValidity()&&author.checkValidity()&&pages.checkValidity()){
+        return true
+    }else{
+        return false
+    }
+}
 
 // Event for form pop-up
 entry.addEventListener('click', () => {
@@ -23,12 +36,17 @@ entry.addEventListener('click', () => {
 });
 
 // Event for form submission
-submit.addEventListener('click', (event) => {
-    event.preventDefault();
-    document.querySelector('.popUp').style.display = 'none';
-    addBookToLibrary()
-    createCard(myLibrary[myLibrary.length - 1], val);
-    val++;
+submit.addEventListener('click', () => {
+    let flag = validation()
+
+    if(flag == true){
+        document.querySelector('.popUp').style.display = 'none';
+        addBookToLibrary()
+        createCard(myLibrary[myLibrary.length - 1], val);
+        val++;
+    }else{
+        return
+    }
 });
 
 // Function to create book display
